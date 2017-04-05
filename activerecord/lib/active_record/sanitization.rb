@@ -93,6 +93,7 @@ module ActiveRecord
       def expand_hash_conditions_for_aggregates(attrs)
         expanded_attrs = {}
         attrs.each do |attr, value|
+          next if attr.nil?
           if aggregation = reflect_on_aggregation(attr.to_sym)
             mapping = aggregation.mapping
             mapping.each do |field_attr, aggregate_attr|
